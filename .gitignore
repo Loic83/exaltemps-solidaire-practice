@@ -38,8 +38,17 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-
-# atelier — corrigés animateur, jamais partagés
-SOLUTIONS.md
-
 next-env.d.ts
+
+# claude code worktrees
+.claude/worktrees/
+!.env.example
+
+# hackathon : passation de l'équipe (documents de l'association) et chronos d'itération
+/passation/
+/passation.zip
+.iterations/
+
+# playwright
+/test-results/
+/playwright-report/

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# .githooks/pre-commit : borne au commit, ni la passation ni un secret n'entrent dans l'historique.
+# Activé par : git config core.hooksPath .githooks
+./scripts/verifier-deployabilite.sh >/dev/null || {
+  echo "Commit refusé par le harnais : corrige les lignes BORNE ci-dessus." >&2
+  exit 1
+}
