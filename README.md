@@ -1,5 +1,14 @@
 ## Atelier : le harnais du hackathon, en vrai (1 h)
 
+### Le hackathon en bref
+
+- **Partie 1, le cadrage** : chaque équipe travaille pour une association dans PM Lab Solidaire. Les cadreurs en tirent une problématique, des idées priorisées, une solution décrite écran par écran, un prototype HTML et les hypothèses à vérifier. Ce dossier devient la **passation** de l'équipe.
+- **Partie 2, le build** : les builders transforment la passation en application en ligne, avec Claude Code, en itérations courtes. L'agent est encadré par un **harnais** : des règles, des commandes, des contrôles et des alarmes.
+
+**Vous êtes builder, et vous êtes ici pendant la partie 1.** Pendant que les cadreurs préparent la passation, vous prenez en main le projet et le harnais (le *harness engineering*). Quand la partie 2 commence, vous savez déjà builder avec.
+
+### L'atelier
+
 Cet atelier prépare la partie 2 du hackathon eXaltemps Solidaire. Vous y utilisez **le même harnais que pendant le build** : les mêmes commandes, règles, contrôles et hooks. Seule la passation change : c'est un dossier de démo, « Le Panier du Quartier » (code `DEMO01`), et tout tourne sur votre poste, sans PM Lab.
 
 Le fil de l'heure : construire une v1 comme au hackathon, casser le harnais, puis décider de ce qui l'entoure.
