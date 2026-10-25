@@ -3,7 +3,7 @@ description: Bilan du harnais en fin de hackathon, à partir de la trace et des 
 ---
 Fais le bilan du harnais pour le builder. Ce n'est pas le bilan du produit : c'est ce que le harnais a apporté, ce qui lui a manqué, et ce que le builder emporte pour la suite.
 
-1. Lis [HARNAIS.md](../../HARNAIS.md), les « Bilan » de `ITERATIONS.md` et la trace `.iterations/trace.jsonl` (une ligne par action ; ne la relis pas en entier, compte et cherche).
+1. Lis [HARNAIS.md](../../HARNAIS.md), les « Bilan » de `ITERATIONS.md`, [HARNAIS-JOURNAL.md](../../HARNAIS-JOURNAL.md) (atelier : les ajustements de l'exercice 3, et le bilan du `/red-team` s'il est dans la conversation) et la trace `.iterations/trace.jsonl` (une ligne par action ; ne la relis pas en entier, compte et cherche).
 2. Établis les faits, sans les embellir :
    - durée de codage réelle de chaque itération, dépassements et décisions du développeur ;
    - actions refusées par le harnais (permissions, hook de vérification), et ce que l'agent a fait ensuite ;
