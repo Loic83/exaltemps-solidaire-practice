@@ -87,6 +87,18 @@ Une page au plus, pour l'agent qui reprendra le dépôt :
 
 ---
 
+## Mise en ligne
+
+Dans le dépôt d'atelier, `URL_PUBLIQUE` vaut `http://localhost:3000`. Pour publier une version :
+
+```bash
+./scripts/publier.sh
+```
+
+Le script construit l'application (`npm run build`), arrête la version publiée précédemment et démarre la nouvelle en arrière-plan (`next start` sur le port `PORT`, 3000 par défaut). Il échoue si le build échoue ou si le port est déjà occupé, par exemple par `npm run dev`. Journaux : `.iterations/build.log` et `.iterations/app.log`.
+
+---
+
 ## Vérification avant de rendre le dépôt
 
 Lance ces vérifications et corrige tant qu'une seule échoue :

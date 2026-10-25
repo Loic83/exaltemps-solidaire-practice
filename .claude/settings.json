@@ -30,8 +30,8 @@
       "Bash(./scripts/verifier-en-ligne.sh)",
       "Bash(./scripts/signaler-version.sh *)",
       "Bash(./scripts/verifier-deployabilite.sh*)",
-      "Bash(git push)",
-      "Bash(git push origin *)"
+      "Bash(./scripts/publier.sh)",
+      "Bash(./scripts/verifier-poste.sh)"
     ],
     "deny": [
       "Bash(rm -rf *)",

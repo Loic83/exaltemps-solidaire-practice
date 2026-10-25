@@ -177,7 +177,7 @@ Une itération est finie quand **tous** ces points sont vrais, et seulement alor
 2. 1 à 3 tests unitaires Vitest couvrent la logique métier de l'itération (règle de calcul, validation, transformation ; pas de test sur du balisage pur), et `npm test` passe ;
 3. le contrat [docs/contrat-deployabilite.md](./docs/contrat-deployabilite.md) est respecté (en attente de validation par la Forge) : `./scripts/verifier-deployabilite.sh` ne signale aucune borne, et tu traites ses alarmes. L'itération 1 pose donc le `Dockerfile`, le `.env.example`, les routes `/health` et `/sante` et le `DEPLOIEMENT.md`, même si l'écran est encore vide. Si Docker est disponible sur la VM, construire et démarrer avec Docker est préconisé (`./scripts/verifier-deployabilite.sh --construire`) ; sinon, le `Dockerfile` est quand même écrit, pour la Forge ;
 4. l'application est en ligne : `./scripts/verifier-en-ligne.sh` confirme que `/health` et `/sante` répondent 200 ;
-5. le code est commité (`Itération N : <objectif>`), et poussé si le dépôt distant est configuré ;
+5. le code est commité (`Itération N : <objectif>`). Dans l'atelier, il n'est pas poussé : le dépôt distant est partagé par tous les participants ;
 6. la version est signalée à PM Lab (`version-prete`).
 
 Le harnais bloque le point 6 tant qu'un `.env` ou un secret est suivi par git, que `npm test` échoue ou que l'application n'est pas en ligne : c'est une borne, pas une consigne.
