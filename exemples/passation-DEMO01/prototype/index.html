@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le Panier du Quartier : réserver mon créneau</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f6f4ef; color: #222; }
+    header { background: #2f6b4f; color: #fff; padding: 16px 20px; }
+    header h1 { margin: 0; font-size: 1.3rem; }
+    main { max-width: 560px; margin: 0 auto; padding: 16px 20px; }
+    section { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
+    h2 { font-size: 1.1rem; margin-top: 0; }
+    .ecran { font-size: .8rem; color: #777; text-transform: uppercase; letter-spacing: .05em; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .creneau { display: flex; justify-content: space-between; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 8px; }
+    .creneau a { color: #2f6b4f; font-weight: 600; text-decoration: none; }
+    .complet { color: #999; }
+    label { display: block; margin-bottom: 6px; }
+    input { font-size: 1rem; padding: 8px; width: 100%; box-sizing: border-box; margin-bottom: 12px; }
+    button { font-size: 1rem; padding: 10px 16px; background: #2f6b4f; color: #fff; border: 0; border-radius: 6px; }
+    .ok { background: #e3f1e8; padding: 10px; border-radius: 6px; }
+    .erreur { background: #fbe5e1; padding: 10px; border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; }
+    td, th { text-align: left; padding: 8px; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <header><h1>Le Panier du Quartier</h1></header>
+  <main>
+
+    <section id="creneaux">
+      <p class="ecran">Écran 1 : les créneaux</p>
+      <h2>Retrait du samedi : choisissez votre créneau</h2>
+      <ul>
+        <li class="creneau"><a href="#reservation">9 h 00</a><span>3 places</span></li>
+        <li class="creneau"><a href="#reservation">9 h 30</a><span>5 places</span></li>
+        <li class="creneau complet"><span>10 h 00</span><span>Complet</span></li>
+        <li class="creneau"><a href="#reservation">10 h 30</a><span>8 places</span></li>
+        <li class="creneau"><a href="#reservation">11 h 00</a><span>6 places</span></li>
+        <li class="creneau"><a href="#reservation">11 h 30</a><span>8 places</span></li>
+      </ul>
+    </section>
+
+    <section id="reservation">
+      <p class="ecran">Écran 2 : la réservation</p>
+      <h2>Samedi à 9 h 30</h2>
+      <label for="carte">Numéro de carte</label>
+      <input id="carte" placeholder="B-0042">
+      <button>Réserver</button>
+      <p class="erreur">Le numéro de carte a la forme B-0042.</p>
+      <p class="ok">Votre créneau est réservé : samedi à 9 h 30.</p>
+    </section>
+
+    <section id="benevole">
+      <p class="ecran">Écran 3 : la liste du bénévole (/benevole)</p>
+      <h2>Réservations du samedi</h2>
+      <table>
+        <tr><th>Créneau</th><th>Numéros de carte</th></tr>
+        <tr><td>9 h 00</td><td>B-0042, B-0107, B-0311, B-0420, B-0518</td></tr>
+        <tr><td>9 h 30</td><td>B-0063, B-0250, B-0777</td></tr>
+        <tr><td>10 h 00</td><td>8 foyers : B-0012, B-0034, B-0088, B-0145, B-0201, B-0333, B-0456, B-0602</td></tr>
+        <tr><td>10 h 30</td><td>Aucun foyer</td></tr>
+        <tr><td>11 h 00</td><td>B-0099, B-0640</td></tr>
+        <tr><td>11 h 30</td><td>Aucun foyer</td></tr>
+      </table>
+    </section>
+
+  </main>
+</body>
+</html>
