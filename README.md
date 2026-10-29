@@ -17,27 +17,13 @@ Le fil de l'heure : construire une v1 comme au hackathon, casser le harnais, pui
 
 | Début | Durée | Étape | Ce que vous faites |
 |---|---|---|---|
-| 0:00 | 5 min | Lancement | `./scripts/verifier-poste.sh`, puis la question de départ, par écrit |
+| 0:00 | 5 min | Lancement | Lancer Claude |
 | 0:05 | 20 min | Exercice 1 : construire la v1 | `/recuperer-passation DEMO01`, `/planifier-iterations`, `/iteration 1` |
 | 0:25 | 12 min | Exercice 2 : red team | `/red-team` : cinq défis pour savoir quelle couche arrête l'agent |
 | 0:37 | 13 min | Exercice 3 : ajuster le harnais | `/ajuster-harnais` : choisir une règle et sa forme, la faire implémenter et prouver |
 | 0:50 | 10 min | Rétro | `/retro-harnais`, puis retour sur la question de départ |
 
 **La question de départ**, à noter avant l'exercice 1 et à relire à la fin : « L'agent modifie un test pour le faire passer. Que mettez-vous en place, sous quelle forme, et pourquoi ? »
-
-### Avant l'atelier (10 minutes)
-
-Sur un poste macOS ou Linux (Windows : WSL), avec Node.js 24, `git`, `jq`, `curl` et Claude Code connecté. Docker est facultatif.
-
-```bash
-git clone https://github.com/Loic83/exaltemps-solidaire-practice.git
-cd exaltemps-solidaire-practice
-npm ci
-npx playwright install chromium
-git config core.hooksPath .githooks
-export CLE=practice URL_PUBLIQUE=http://localhost:3000 PORT=3000
-./scripts/verifier-poste.sh        # doit finir par « Poste prêt. »
-```
 
 Lancez ensuite `claude` **depuis ce même terminal, à la racine du dépôt** : les hooks utilisent son `PATH` et ses variables.
 
