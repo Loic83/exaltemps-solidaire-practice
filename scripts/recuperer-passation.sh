@@ -5,11 +5,14 @@ set -euo pipefail
 code="${1:-}"
 [[ "$code" =~ ^[A-Za-z0-9]{6}$ ]] || { echo "Code d'équipe invalide : six lettres ou chiffres attendus." >&2; exit 1; }
 [ -n "${CLE:-}" ] || { echo "Variable CLE absente." >&2; exit 1; }
-# Atelier : la passation DEMO01 est copiée depuis exemples/, sans appel à PM Lab.
+# Atelier : récupération simulée, sans appel à PM Lab. Le cadrage de la partie 1 est déjà
+# dans exemples/passation-DEMO01 ; on le copie dans passation/, où le harnais le lit.
 if [ "$code" = "DEMO01" ]; then
   rm -rf passation && cp -R exemples/passation-DEMO01 passation
   echo "$code" > passation/.code-equipe
-  echo "Passation de $code dans passation/ (exemple de l'atelier, copiée depuis exemples/passation-DEMO01)."
+  echo "Atelier : récupération simulée, aucun appel à PM Lab."
+  echo "Le dossier exemples/passation-DEMO01 contient déjà le cadrage de la partie 1 (« Le Panier du Quartier »)."
+  echo "Il est copié dans passation/, comme le ferait le téléchargement au hackathon."
   exit 0
 fi
 statut=$(curl -sS -o passation.zip -w '%{http_code}' -H "x-cle-contexte: $CLE" \
