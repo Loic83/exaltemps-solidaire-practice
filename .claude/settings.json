@@ -52,7 +52,9 @@
       "Bash(docker exec*)",
       "Bash(git add * -f*)",
       "Bash(git add *--force*)",
-      "Bash(git add *passation*)",
+      "Bash(git add passation*)",
+      "Bash(git add * passation*)",
+      "Bash(git add *./passation*)",
       "Bash(git commit *--no-verify*)",
       "Bash(git commit -n*)",
       "Bash(git commit * -n *)"
