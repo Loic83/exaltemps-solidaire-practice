@@ -71,7 +71,7 @@ Trois questions à vous poser : pourquoi pas une autre forme ? Quel faux positif
 |---|---|---|
 | Passation | Téléchargée depuis PM Lab avec le code de l'équipe | `DEMO01`, copiée depuis `exemples/passation-DEMO01/` |
 | Signal à PM Lab | Appel à l'API de PM Lab | Écrit dans `.iterations/signaux.log` |
-| `URL_PUBLIQUE` | Adresse publique de l'équipe | `http://localhost:3000` |
+| Adresse de l'application | `URL_PUBLIQUE`, l'adresse publique de l'équipe, sur le port `PORT` | Toujours `http://localhost:3000` (`ATELIER_PORT`) : `URL_PUBLIQUE` et `PORT` sont ignorés, ils appartiennent au déploiement réel de l'équipe |
 | Mise en ligne | Procédure à définir | `./scripts/publier.sh` (build, puis `next start` en arrière-plan) |
 | Commit | Un commit par itération (`Itération N : …`), puis un `git push` | Ni commit ni push : le code reste dans l'arbre de travail, l'atelier se rejoue sur un `main` propre |
 | Commandes en plus | — | `/red-team`, `/ajuster-harnais` |

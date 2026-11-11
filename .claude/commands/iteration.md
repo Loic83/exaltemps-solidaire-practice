@@ -33,7 +33,7 @@ Reprends les 6 points de la DoD de la section 8, dans l'ordre :
 1. Critères d'acceptation : satisfaits, ou reportés dans `ITERATIONS.md`.
 2. 1 à 3 tests unitaires Vitest sur la logique métier ajoutée ; `npm test` passe.
 3. Contrat [docs/contrat-deployabilite.md](../../docs/contrat-deployabilite.md) respecté : lance `./scripts/verifier-deployabilite.sh`. Une ligne `BORNE` se corrige avant tout (un `.env` ou un secret suivi par git, la passation commitée) ; une ligne `ALARME` se traite si le temps le permet, sinon se reporte. Si Docker est disponible sur la VM, ajoute `--construire` : c'est préconisé, pas exigé.
-4. Application en ligne sur `$URL_PUBLIQUE` : publie selon la section « Mise en ligne » de [docs/contrat-deployabilite.md](../../docs/contrat-deployabilite.md), puis `./scripts/verifier-en-ligne.sh` confirme que `/health` et `/sante` répondent 200. Si `URL_PUBLIQUE` n'est pas définie, ou si tu ne sais pas comment la VM expose l'application, arrête-toi et dis-le (❗️) : n'invente pas de mécanisme de publication.
+4. Application en ligne sur `$URL_PUBLIQUE` (**atelier** : toujours `http://localhost:3000` ; ne lis ni `$URL_PUBLIQUE` ni `$PORT`, réservés au déploiement réel de l'équipe) : publie selon la section « Mise en ligne » de [docs/contrat-deployabilite.md](../../docs/contrat-deployabilite.md), puis `./scripts/verifier-en-ligne.sh` confirme que `/health` et `/sante` répondent 200. Hors atelier, si `URL_PUBLIQUE` n'est pas définie, ou si tu ne sais pas comment la VM expose l'application, arrête-toi et dis-le (❗️) : n'invente pas de mécanisme de publication.
 5. Commit `Itération $ARGUMENTS : <objectif>`. Jamais `git add -f`, jamais le dossier `passation/`.
    **Atelier** (`passation/.code-equipe` vaut `DEMO01`) : ne commite pas et ne pousse pas. Le code reste dans l'arbre de travail ; montre `git status --short` et dis au participant que ce point de la DoD est sauté volontairement.
 6. Signal à PM Lab avec l'outil du harnais : `./scripts/signaler-version.sh $ARGUMENTS`. N'appelle pas `curl` toi-même.
@@ -41,7 +41,7 @@ Reprends les 6 points de la DoD de la section 8, dans l'ordre :
 
 ## 4. Mettre à jour la démo (hors DoD)
 
-S'il reste du temps, ajoute les étapes de l'itération à `e2e/demo.spec.ts` : un seul test, le cas passant de bout en bout, des étapes lisibles (`test.step("Je saisis une demande", ...)`), puis `BASE_URL=$URL_PUBLIQUE npm run demo`. Une démo qui échoue se signale, elle ne bloque rien.
+S'il reste du temps, ajoute les étapes de l'itération à `e2e/demo.spec.ts` : un seul test, le cas passant de bout en bout, des étapes lisibles (`test.step("Je saisis une demande", ...)`), puis `BASE_URL=$URL_PUBLIQUE npm run demo` (atelier : `npm run demo` seul, qui vise `http://localhost:3000`). Une démo qui échoue se signale, elle ne bloque rien.
 
 Si Playwright n'est pas encore installé dans le dépôt, dis-le (❗️) et installe-le au minimum : `@playwright/test` en dépendance de développement, un `playwright.config.ts` avec Chromium seul et `baseURL` lue dans `BASE_URL` (défaut `http://localhost:3000`), et un script `"demo": "playwright test e2e/demo.spec.ts --headed"`.
 

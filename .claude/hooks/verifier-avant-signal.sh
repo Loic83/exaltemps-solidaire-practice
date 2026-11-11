@@ -29,6 +29,6 @@ if ! npm test --silent >/dev/null 2>&1; then
   refuser "Signal refusé par le harnais : npm test échoue. Corrige les tests avant de signaler la version."
 fi
 if ! ./scripts/verifier-en-ligne.sh >/dev/null 2>&1; then
-  refuser "Signal refusé par le harnais : l'application ne répond pas sur \$URL_PUBLIQUE/health et /sante. La version n'est pas en ligne."
+  refuser "Signal refusé par le harnais : l'application ne répond pas sur /health et /sante (atelier : http://localhost:3000 ; hackathon : \$URL_PUBLIQUE). La version n'est pas en ligne."
 fi
 exit 0
