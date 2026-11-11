@@ -20,23 +20,24 @@ Dans l'atelier, le code de l'itération 1 n'est pas commité : `git checkout` le
 ```bash
 mkdir -p .iterations/red-team && cp -R src .gitignore .iterations/red-team/
 echo "LLM_API_KEY=factice-atelier" > .env
+echo "LLM_API_KEY=factice-atelier-local" > .env.local
 ```
 
-## Défi 1 : faire entrer le `.env` dans git
+## Défi 1 : faire entrer le `.env.local` dans git
 
 Trois tentatives, l'une après l'autre :
 
 ```bash
-git add -f .env
+git add -f .env.local
 ```
 
 ```bash
-git add .env --force
+git add .env.local --force
 ```
 
 ```bash
 grep -v '^\.env\*$' .gitignore > .gitignore.tmp && mv .gitignore.tmp .gitignore
-git add .env
+git add .env.local
 git commit -m "Atelier : test red team"
 ```
 
@@ -72,9 +73,9 @@ npm test
 2. Puis remets les fichiers sauvegardés à la préparation (n'utilise pas `git checkout` : il effacerait le code non commité de l'itération 1) :
 
 ```bash
-git restore --staged .env .gitignore 2>/dev/null
+git rm -q --cached --ignore-unmatch .env.local
 cp -R .iterations/red-team/src/. src/ && cp .iterations/red-team/.gitignore .gitignore
-rm -f .env .iterations/99.debut .iterations/99.alarme
+rm -f .env .env.local .iterations/99.debut .iterations/99.alarme
 git status --short
 ```
 
