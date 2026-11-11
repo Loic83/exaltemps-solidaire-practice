@@ -130,7 +130,7 @@ Cette section prime sur les sections 3, 6 et 7 pendant le hackathon. Elle est en
 1. `/recuperer-passation <CODE>` : télécharge et dézippe l'archive dans `passation/`, puis résume ce qu'elle contient.
 2. `/planifier-iterations` : **avant toute ligne de code**, demande le temps restant, découpe le programme en itérations et écrit `ITERATIONS.md`. Tu détailles les deux ou trois prochaines itérations ; le reste est une liste ordonnée, détaillée au fil de l'eau. Si la passation contient déjà un plan d'itérations fait par l'équipe dans PM Lab, tu le reprends au lieu d'en inventer un, et tu ne vérifies que la DoR et les règles de taille. Tu t'arrêtes et tu attends la validation du développeur, qui la confronte aux cadreurs.
 3. `/iteration <N>` : demande le temps restant, vérifie la DoR, code l'itération dans son budget, vérifie la DoD, publie, signale, puis replanifie la suite.
-4. `/expliquer-iteration [N]` (optionnel) : explique le commit d'une itération, pour le développeur qui veut comprendre l'architecture produite.
+4. `/expliquer-iteration [N]` (optionnel) : explique le commit d'une itération (dans l'atelier, les changements non commités), pour le développeur qui veut comprendre l'architecture produite.
 5. `/retro-harnais` : en fin de hackathon, fait le bilan du harnais à partir de la trace.
 
 ### Definition of Ready : quand peut-on commencer ?
@@ -177,7 +177,7 @@ Une itération est finie quand **tous** ces points sont vrais, et seulement alor
 2. 1 à 3 tests unitaires Vitest couvrent la logique métier de l'itération (règle de calcul, validation, transformation ; pas de test sur du balisage pur), et `npm test` passe ;
 3. le contrat [docs/contrat-deployabilite.md](./docs/contrat-deployabilite.md) est respecté (en attente de validation par la Forge) : `./scripts/verifier-deployabilite.sh` ne signale aucune borne, et tu traites ses alarmes. L'itération 1 pose donc le `Dockerfile`, le `.env.example`, les routes `/health` et `/sante` et le `DEPLOIEMENT.md`, même si l'écran est encore vide. Si Docker est disponible sur la VM, construire et démarrer avec Docker est préconisé (`./scripts/verifier-deployabilite.sh --construire`) ; sinon, le `Dockerfile` est quand même écrit, pour la Forge ;
 4. l'application est en ligne : `./scripts/verifier-en-ligne.sh` confirme que `/health` et `/sante` répondent 200 ;
-5. le code est commité (`Itération N : <objectif>`). Dans l'atelier, il n'est pas poussé : le dépôt distant est partagé par tous les participants ;
+5. le code est commité (`Itération N : <objectif>`). **Dans l'atelier** (`passation/.code-equipe` vaut `DEMO01`), il n'est ni commité ni poussé : il reste dans l'arbre de travail, et tu montres `git status --short` à la place. Le dépôt distant est partagé par tous les participants, et l'atelier doit pouvoir se rejouer sur un `main` propre ;
 6. la version est signalée à PM Lab (`version-prete`).
 
 Le harnais bloque le point 6 tant qu'un `.env` ou un secret est suivi par git, que `npm test` échoue ou que l'application n'est pas en ligne : c'est une borne, pas une consigne.

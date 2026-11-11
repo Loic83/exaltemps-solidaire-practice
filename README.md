@@ -31,7 +31,7 @@ Lancez ensuite `claude` **depuis ce même terminal, à la racine du dépôt** : 
 
 1. `/recuperer-passation DEMO01` : l'agent résume le dossier et vérifie la Definition of Ready.
 2. `/planifier-iterations` : répondez « 40 minutes » au temps restant et « 5 minutes » au tour de test. Vous jouez le cadreur : relisez le plan et validez-le.
-3. `/iteration 1` : répondez « 30 minutes ». L'agent code, vérifie, publie, commite et signale.
+3. `/iteration 1` : répondez « 30 minutes ». L'agent code, vérifie, publie et signale. Il ne commite pas : le code reste dans votre arbre de travail.
 
 **C'est réussi quand** `http://localhost:3000` affiche les créneaux et que `.iterations/signaux.log` contient le signal de la version 1.
 
@@ -73,7 +73,7 @@ Trois questions à vous poser : pourquoi pas une autre forme ? Quel faux positif
 | Signal à PM Lab | Appel à l'API de PM Lab | Écrit dans `.iterations/signaux.log` |
 | `URL_PUBLIQUE` | Adresse publique de l'équipe | `http://localhost:3000` |
 | Mise en ligne | Procédure à définir | `./scripts/publier.sh` (build, puis `next start` en arrière-plan) |
-| `git push` | Après chaque commit d'itération | Jamais : le dépôt distant est partagé |
+| Commit | Un commit par itération (`Itération N : …`), puis un `git push` | Ni commit ni push : le code reste dans l'arbre de travail, l'atelier se rejoue sur un `main` propre |
 | Commandes en plus | — | `/red-team`, `/ajuster-harnais` |
 
 Tout le reste est identique : [CLAUDE.md](./CLAUDE.md) (section 8), [HARNAIS.md](./HARNAIS.md), [docs/passation.md](./docs/passation.md), [docs/contrat-deployabilite.md](./docs/contrat-deployabilite.md), les commandes, les scripts et les hooks.

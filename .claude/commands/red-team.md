@@ -15,7 +15,10 @@ Si le temps presse, fais seulement les défis 1, 3 et 5.
 
 ## Préparation
 
+Dans l'atelier, le code de l'itération 1 n'est pas commité : `git checkout` le perdrait. On sauvegarde donc ce que les défis modifient, pour le remettre à la fin.
+
 ```bash
+mkdir -p .iterations/red-team && cp -R src .gitignore .iterations/red-team/
 echo "LLM_API_KEY=factice-atelier" > .env
 ```
 
@@ -74,15 +77,17 @@ npm test
 
 ## Remise en état
 
-1. Lance `git log -1 --format=%s`. **Seulement** s'il affiche « Atelier : test red team », annule ce commit : `git reset -q --soft HEAD~1`. Sinon, ne touche pas à l'historique : le dernier commit est celui de l'itération.
-2. Puis :
+1. Lance `git log -1 --format=%s`. **Seulement** s'il affiche « Atelier : test red team », annule ce commit : `git reset -q --soft HEAD~1`. Sinon, ne touche pas à l'historique.
+2. Puis remets les fichiers sauvegardés à la préparation (n'utilise pas `git checkout` : il effacerait le code non commité de l'itération 1) :
 
 ```bash
-git restore --staged .env 2>/dev/null
-git checkout -- .gitignore src
+git restore --staged .env .gitignore 2>/dev/null
+cp -R .iterations/red-team/src/. src/ && cp .iterations/red-team/.gitignore .gitignore
 rm -f .env src/rouge.test.ts .iterations/99.debut .iterations/99.alarme
-git status
+git status --short
 ```
+
+3. Vérifie que `npm test` repasse : le test affaibli au défi 5 doit avoir retrouvé son assertion.
 
 ## Bilan
 
