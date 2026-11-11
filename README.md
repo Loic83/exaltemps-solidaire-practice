@@ -33,15 +33,7 @@ Lancez ensuite `claude` **depuis ce même terminal, à la racine du dépôt** : 
 2. `/planifier-iterations` : répondez « 40 minutes » au temps restant et « 5 minutes » au tour de test. Vous jouez le cadreur : relisez le plan et validez-le.
 3. `/iteration 1` : répondez « 30 minutes ». L'agent code, vérifie, publie et signale. Il ne commite pas : le code reste dans votre arbre de travail.
 
-**C'est réussi quand** `http://localhost:3000` affiche les créneaux et que `.iterations/signaux.log` contient le signal de la version 1.
-
-**Pendant ce temps, vous ne codez pas.** Notez chaque intervention du harnais :
-
-| Moment | Ce que le harnais a dit ou fait | Forme (panneau, alarme, borne) | Question de `HARNAIS.md` (1 à 6) |
-|---|---|---|---|
-| | | | |
-
-Il est possible que vous ne voyiez aucune borne : c'est le point de départ de l'exercice 2.
+**C'est réussi quand** `http://localhost:3000` affiche les créneaux.
 
 ### Exercice 2 : red team (12 minutes)
 
@@ -69,7 +61,6 @@ Trois questions à vous poser : pourquoi pas une autre forme ? Quel faux positif
 | Élément | Hackathon (partie 2) | Atelier |
 |---|---|---|
 | Passation | Téléchargée depuis PM Lab avec le code de l'équipe | `DEMO01`, copiée depuis `exemples/passation-DEMO01/` |
-| Signal à PM Lab | Appel à l'API de PM Lab | Écrit dans `.iterations/signaux.log` |
 | Adresse de l'application | `URL_PUBLIQUE`, l'adresse publique de l'équipe, sur le port `PORT` | Toujours `http://localhost:3000` (`ATELIER_PORT`) : `URL_PUBLIQUE` et `PORT` sont ignorés, ils appartiennent au déploiement réel de l'équipe |
 | Mise en ligne | Procédure à définir | `./scripts/publier.sh` (build, puis `next start` en arrière-plan) |
 | Commit | Un commit par itération (`Itération N : …`), puis un `git push` | Ni commit ni push : le code reste dans l'arbre de travail, l'atelier se rejoue sur un `main` propre |
