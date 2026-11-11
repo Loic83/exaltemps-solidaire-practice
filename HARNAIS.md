@@ -112,7 +112,7 @@ La DoD d'une itération (détail dans la section 8 du `CLAUDE.md`) :
 | 2. 1 à 3 tests unitaires, `npm test` passe | **borne** |
 | 3. Contrat de déployabilité respecté (`scripts/verifier-deployabilite.sh`) | **borne** pour les `.env` et les secrets ; **alarme** pour le reste (Dockerfile, `.env.example`, routes de santé, `DEPLOIEMENT.md`) ; construction Docker préconisée si Docker est disponible |
 | 4. Application en ligne, `/health` et `/sante` répondent 200 | **borne** |
-| 5. Code commité | panneau |
+| 5. Code commité (hackathon seulement : pas de commit dans l'atelier) | panneau |
 | 6. Version signalée à PM Lab | c'est la porte de sortie |
 
 La borne : le hook `.claude/hooks/verifier-avant-signal.sh` refuse le signal à PM Lab tant qu'un `.env` ou un secret est suivi par git, que les tests échouent ou que l'application ne répond pas. L'agent peut affirmer ce qu'il veut, il ne peut pas sortir.

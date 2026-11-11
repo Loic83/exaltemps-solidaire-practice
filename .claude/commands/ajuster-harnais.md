@@ -33,4 +33,4 @@ Le plus petit changement qui réalise la règle, dans la forme choisie. Un hook 
 
 Ajoute une entrée à `HARNAIS-JOURNAL.md`, au format du fichier : la date, le trou, la règle, la forme et sa justification, la preuve (tentative arrêtée, action légitime qui passe), et **ce que la règle ne couvre pas**.
 
-Puis commite à part, avec les fichiers modifiés et le journal : `Harnais : <la règle en quelques mots>`. Ne pousse pas.
+Ne commite pas et ne pousse pas : dans l'atelier, les changements restent dans l'arbre de travail. Montre `git status --short` pour que le participant voie les fichiers touchés.

@@ -27,12 +27,18 @@ fi
 [ -n "$(git config user.name)" ] && [ -n "$(git config user.email)" ] && ok "identité git" || ko "identité git : git config user.name et user.email"
 
 [ -n "${CLE:-}" ] && ok "CLE définie" || ko "CLE : export CLE=practice"
-attendu="http://localhost:${PORT:-3000}"
-if [ "${URL_PUBLIQUE:-}" = "$attendu" ]; then ok "URL_PUBLIQUE=$attendu"; else ko "URL_PUBLIQUE : export URL_PUBLIQUE=$attendu (trouvé : ${URL_PUBLIQUE:-vide})"; fi
-if curl -fsS -o /dev/null --max-time 2 "$attendu/" 2>/dev/null; then
-  ko "le port ${PORT:-3000} est déjà utilisé : arrête le programme qui l'occupe (npm run dev ?)"
+# L'atelier publie toujours en local, sur ATELIER_PORT (3000 par défaut). PORT et URL_PUBLIQUE
+# appartiennent au déploiement réel de l'équipe : l'atelier ne les lit pas.
+port="${ATELIER_PORT:-3000}"
+attendu="http://localhost:$port"
+[ -n "${PORT:-}" ] && info "PORT=$PORT ignoré : réservé au déploiement réel de l'équipe"
+[ -n "${URL_PUBLIQUE:-}" ] && info "URL_PUBLIQUE ignorée : l'atelier publie sur $attendu"
+if [ -n "${PORT:-}" ] && [ "$port" = "$PORT" ]; then
+  ko "ATELIER_PORT ($port) vaut PORT, le port du déploiement réel de l'équipe : export ATELIER_PORT=3000"
+elif curl -fsS -o /dev/null --max-time 2 "$attendu/" 2>/dev/null; then
+  ko "le port $port est déjà utilisé : arrête le programme qui l'occupe (npm run dev ?)"
 else
-  ok "port ${PORT:-3000} libre"
+  ok "port $port libre (l'atelier publie sur $attendu)"
 fi
 
 echo

@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
-# Outil (atelier) : met l'application en ligne sur URL_PUBLIQUE, c'est-à-dire http://localhost:$PORT.
+# Outil (atelier) : met l'application en ligne sur http://localhost:$ATELIER_PORT (3000 par défaut).
 # Construit, arrête la version précédemment publiée, démarre la nouvelle en arrière-plan.
 # Usage : scripts/publier.sh   (journaux dans .iterations/build.log et .iterations/app.log)
+# Ne lit jamais PORT : sur une machine du hackathon, PORT est le port du déploiement réel de l'équipe.
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
-port="${PORT:-3000}"
+port="${ATELIER_PORT:-3000}"
+if [ -n "${PORT:-}" ] && [ "$port" = "$PORT" ]; then
+  echo "ATELIER_PORT ($port) vaut PORT, le port du déploiement réel de l'équipe : choisis un autre port." >&2
+  exit 1
+fi
 mkdir -p .iterations
 
 if ! npm run build > .iterations/build.log 2>&1; then
@@ -22,7 +27,7 @@ if curl -fsS -o /dev/null --max-time 2 "http://localhost:$port/" 2>/dev/null; th
   exit 1
 fi
 
-nohup ./node_modules/.bin/next start -p "$port" > .iterations/app.log 2>&1 &
+PORT="$port" nohup ./node_modules/.bin/next start -p "$port" > .iterations/app.log 2>&1 &
 echo $! > .iterations/app.pid
 
 for _ in $(seq 30); do

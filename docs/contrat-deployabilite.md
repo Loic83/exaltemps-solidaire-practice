@@ -89,13 +89,13 @@ Une page au plus, pour l'agent qui reprendra le dépôt :
 
 ## Mise en ligne
 
-Dans le dépôt d'atelier, `URL_PUBLIQUE` vaut `http://localhost:3000`. Pour publier une version :
+Dans l'atelier, l'application est publiée **uniquement en local**, sur `http://localhost:3000`, quelles que soient les valeurs de `URL_PUBLIQUE` et de `PORT` : sur une machine du hackathon, ces deux variables désignent le déploiement réel de l'équipe, que l'atelier ne doit pas toucher. Pour publier une version :
 
 ```bash
 ./scripts/publier.sh
 ```
 
-Le script construit l'application (`npm run build`), arrête la version publiée précédemment et démarre la nouvelle en arrière-plan (`next start` sur le port `PORT`, 3000 par défaut). Il échoue si le build échoue ou si le port est déjà occupé, par exemple par `npm run dev`. Journaux : `.iterations/build.log` et `.iterations/app.log`.
+Le script construit l'application (`npm run build`), arrête la version publiée précédemment et démarre la nouvelle en arrière-plan (`next start` sur le port `ATELIER_PORT`, 3000 par défaut ; il ne lit jamais `PORT`). Il échoue si le build échoue, si le port est déjà occupé (par exemple par `npm run dev`) ou si `ATELIER_PORT` vaut `PORT`. L'application continue de tourner après la session : pour l'arrêter, `kill $(cat .iterations/app.pid)`. Journaux : `.iterations/build.log` et `.iterations/app.log`.
 
 ---
 
